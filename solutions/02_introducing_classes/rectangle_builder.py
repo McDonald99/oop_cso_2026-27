@@ -1,5 +1,17 @@
 from shapes import Rectangle
 
+def find_greatest_area(rect_list):
+    max_area = -1
+    biggest = None
+
+    for rect in rect_list:
+        if rect.calc_area() > max_area:
+            max_area = rect.calc_area()
+            biggest = rect
+
+    return biggest
+
+
 if __name__ == "__main__":
     rectangles = []
 
@@ -18,3 +30,7 @@ if __name__ == "__main__":
 
         # Save rectangle in the list
         rectangles.append(rect)
+
+    max_rect = find_greatest_area(rectangles)
+    if max_rect is not None:
+        max_rect.display()
