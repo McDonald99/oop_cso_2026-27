@@ -42,10 +42,20 @@ class Employee:
         return bonus
 
 if __name__ == "__main__":
+
+    # f_name = input("Please enter your first name: ")
+    # l_name = input("Please enter your last name: ")
+    # age = input("Please enter your age: ")
+    # is_left = input("If you are left handed, enter 'True', otherwise enter 'False': ")
+    #
+    # p1 = Person(f_name, l_name, age, is_left)
+    # p1.display()
+
+    emp_id = input("Please enter your id: ")
     f_name = input("Please enter your first name: ")
     l_name = input("Please enter your last name: ")
-    age = input("Please enter your age: ")
-    is_left = input("If you are left handed, enter 'True', otherwise enter 'False': ")
+    emp_salary = int(input("Please enter your salary: "))
+    title = input("Please enter your job title: ")
 
-    p1 = Person(f_name, l_name, age, is_left)
-    p1.display()
+    emp = Employee(emp_id, f_name, l_name, emp_salary, title)
+    emp.display()
