@@ -1,8 +1,4 @@
 class Rectangle:
-    length = 10
-    width = 5
-    colour = "blue"
-
     def __init__(self, length, width, colour="Blue"):
         self.length = length
         self.width = width
