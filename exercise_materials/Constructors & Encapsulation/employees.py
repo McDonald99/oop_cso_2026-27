@@ -1,5 +1,14 @@
 from people import Employee
 
+
+def highest_bonus(dictionary):
+    max_bonus = 0
+    for value in dictionary.values():
+        bonus = value.calc_bonus()
+        if bonus < max_bonus:
+            max_bonus = bonus
+    return max_bonus
+
 employees = {}
 
 for emp in range(2):
@@ -19,4 +28,5 @@ for emp in range(2):
             employees[emp_id] = employee
             break
 
-print(employees)
+max_bonus = highest_bonus(employees)
+print(max_bonus)

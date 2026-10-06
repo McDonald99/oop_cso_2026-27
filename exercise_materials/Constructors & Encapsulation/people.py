@@ -41,6 +41,8 @@ class Employee:
             bonus = self._salary*0.06
         return bonus
 
+
+
 if __name__ == "__main__":
 
     # f_name = input("Please enter your first name: ")
