@@ -11,6 +11,8 @@ if __name__ == "__main__":
         print(f"Student name: {students[i]["name"]}")
         print(f"Average score: {students[i]["average_mark"]}")
 
+
+
     # Answer(s) for A1.2:
     # If we don't know where "Dan" is:
     for student_dict in students:
@@ -34,3 +36,9 @@ if __name__ == "__main__":
             name = students[i]["name"]
 
     print(f"Student with highest mark ({max_mark}) was {name}")
+
+
+    def add_mark(student_dict, new_mark):
+        student_dict["mark"].append(new_mark)
+
+    
