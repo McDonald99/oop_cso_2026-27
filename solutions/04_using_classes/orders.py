@@ -1,19 +1,16 @@
 class Pizza:
     _sizes = ["small", "medium", "large", "extra-large"]
 
-    toppings = []
-
-    def __init__(self, size, toppings):
+    def __init__(self, toppings, size="medium"):
         if size.lower() in Pizza._sizes:
             self._size = size
         else:
             self._size = "medium"
 
-        for topping in self.toppings:
-            Pizza.toppings.append(topping)
+
+        self.toppings = toppings
 
     def set_size(self, new_size):
-
         if new_size.lower() in Pizza._sizes:
             self._size = new_size
             return True
@@ -21,20 +18,25 @@ class Pizza:
             return False
 
     def display(self):
-        print(f"Pizza size: {self._size}")
-        print(f"Pizza toppings: {self.toppings}")
+        if len(self.toppings) == 1:
+            toppings = self.toppings[0]
+        elif len(self.toppings) > 1:
+            toppings = ", ".join(self.toppings[0:-1])
+            toppings += f" and {self.toppings[-1]}"
+        else:
+            toppings = "no toppings."
+
+        print(f"{self._size} pizza with {toppings}")
 
     def get_size(self):
         return self._size
 
     def get_num_toppings(self):
-        count = 0
-        for i in self.toppings:
-            count += 1
+        count = len(self.toppings)
         return count
 
     def add_topping(self, topping):
-        self.toppings.append(topping)
+        self.toppings.append(topping.lower())
         return True
 
     def remove_topping(self, topping):
@@ -43,3 +45,17 @@ class Pizza:
             return True
         else:
             return False
+
+
+if __name__ == "__main__":
+    pizza1 = Pizza(["cheese", "pineapple"], "small")
+    pizza1.display()
+
+    pizza2 = Pizza(["ham, cheese", "pineapple"], "large")
+    pizza2.display()
+
+    pizza3 = Pizza(["cheese"])
+    pizza3.display()
+
+    pizza4 = Pizza([], "medium")
+    pizza4.display()
