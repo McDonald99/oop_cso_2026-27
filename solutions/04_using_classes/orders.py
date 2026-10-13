@@ -1,3 +1,4 @@
+
 class Pizza:
     _sizes = ["small", "medium", "large", "extra-large"]
 
@@ -9,6 +10,20 @@ class Pizza:
 
         self.toppings = toppings
 
+    @classmethod
+    def validate_size(cls, size):
+        if size.lower() in cls._sizes:
+            return True
+
+        return False
+
+    @classmethod
+    def add_valid_size(cls, new_size):
+        if new_size.lower() not in cls._sizes:
+            cls._sizes.append(new_size.lower())
+            return True
+
+        return False
 
     def set_size(self, new_size):
         if new_size.lower() in Pizza._sizes:
@@ -41,3 +56,14 @@ if __name__ == "__main__":
 
     pizza4 = Pizza([], "medium")
     pizza4.display()
+
+    new_size = "personal"
+    if pizza1.validate_size(new_size):
+        print(f"{new_size} is a valid size")
+    else:
+        print(f"{new_size} is invalid")
+
+    if Pizza.validate_size(new_size):
+        print(f"{new_size} is a valid size")
+    else:
+        print(f"{new_size} is invalid")
