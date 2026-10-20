@@ -1,7 +1,7 @@
 class Pizza:
     _sizes = ["small", "medium", "large", "extra-large"]
 
-    def __init__(self, toppings, size="medium"):
+    def __init__(self, toppings: list[str], size: str ="medium"):
         if size.lower() in Pizza._sizes:
             self._size = size
         else:
@@ -10,7 +10,7 @@ class Pizza:
 
         self.toppings = toppings
 
-    def set_size(self, new_size):
+    def set_size(self, new_size: str) -> bool:
         if new_size.lower() in Pizza._sizes:
             self._size = new_size
             return True
@@ -35,16 +35,23 @@ class Pizza:
         count = len(self.toppings)
         return count
 
-    def add_topping(self, topping):
+    def add_topping(self, topping: str) -> bool:
         self.toppings.append(topping.lower())
         return True
 
-    def remove_topping(self, topping):
+    def remove_topping(self, topping: str):
         if topping.lower() in self.toppings:
             self.toppings.remove(topping)
             return True
         else:
             return False
+
+
+class Order:
+    username = ""
+    pizzas = {}
+
+    def add_pizza(self, nickname: str, new_pizza: Pizza) -> bool:
 
 
 if __name__ == "__main__":
