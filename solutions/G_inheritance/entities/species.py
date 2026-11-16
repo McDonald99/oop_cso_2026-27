@@ -89,6 +89,29 @@ class Dog(Animal):
         # so we can append the Dog-specific attributes
         return f"{super().__repr__()[0:-1]}, breed={self.breed}, personality={self.personality}}}"
 
+    def __eq__(self, other: object) -> bool | NotImplementedType:
+        if not isinstance(other, Dog):
+            return NotImplemented
+
+        if not super().__eq__(other):
+            return False
+
+        if self.breed.lower() != other.breed.lower():
+            return False
+
+        # Have to handle comparison differently due to case-insensitivity
+        # on potentially None fields
+        # If either one is None, compare without using lower()
+        if not self.breed or not other.breed:
+            return self.breed != other.breed
+
+        # If both are real, compare actual data case-insensitively
+        if self.breed.lower() != other.breed.lower():
+            return False
+
+        return True
+
+
 
 
 if __name__ == "__main__":
