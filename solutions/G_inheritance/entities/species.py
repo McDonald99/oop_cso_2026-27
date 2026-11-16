@@ -40,6 +40,9 @@ class Animal:
         return f"{self.name} is {self.calc_age()} years old and weighs {self.weight}kg."
 
     def __repr__(self) -> str:
+        # Note the way the class name is included
+        # This will ensure the class name always reflects the actual type of the object
+        # It's not hard-coded to only ever say Animal!
         return f"{self.__class__.__name__}{{name={self.name}, weight:{self.weight}, dob={self.dob}}}"
 
     def __eq__(self, other: object) -> bool | NotImplementedType:
@@ -81,6 +84,10 @@ class Dog(Animal):
     def __str__(self) -> str:
         return f"{super().__str__()} {self.name} is a {self.breed} with a {self.personality.casefold()} personality"
 
+    def __repr__(self) -> str:
+        # super().__repr__()[0:-1] peels the closing } off the repr output for Animal,
+        # so we can append the Dog-specific attributes
+        return f"{super().__repr__()[0:-1]}, breed={self.breed}, personality={self.personality}}}"
 
 
 
@@ -90,3 +97,5 @@ if __name__ == "__main__":
 
     dog = Dog(date(2021, 10, 13), 4, "poodle", "Celia", "Bubbly!")
     dog.display()
+
+    print(repr(dog))
