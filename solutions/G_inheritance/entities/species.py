@@ -57,8 +57,7 @@ class Animal:
 
         return True
 
-
-    def calc_age(self):
+    def calc_age(self) -> int:
         today = date.today()
         difference = today - self.dob
         return int(difference.days / 365)
@@ -75,6 +74,12 @@ class Dog(Animal):
 
         self.breed = breed
         self.personality = personality
+
+    def display(self) -> None:
+        print(self)
+
+    def __str__(self) -> str:
+        return f"{super().__str__()} {self.name} is a {self.breed} with a {self.personality.casefold()} personality"
 
 
 
